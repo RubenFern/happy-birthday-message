@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FelicitationComponent } from '../felicitation/felicitation.component';
+import { BirthdayCardComponent } from '../birthday-card/birthday-card.component';
 
 @Component({
     selector: 'app-ballons',
     standalone: true,
     imports: [
         CommonModule,
-        FelicitationComponent
+        FelicitationComponent,
+        BirthdayCardComponent
     ],
     templateUrl: './ballons.component.html',
     styleUrl: './ballons.component.css'
