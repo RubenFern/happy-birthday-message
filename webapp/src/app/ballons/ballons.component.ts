@@ -20,7 +20,14 @@ export class BallonsComponent implements OnInit
 
     ngOnInit(): void
     {
-        const numBallons = window.innerWidth < 768 ? 7 : 27;
+        let numBallons = 0;
+
+        if (window.innerWidth < 400)
+            numBallons = 7;
+        else if (window.innerWidth < 800)
+            numBallons = 12;
+        else
+            numBallons = 27;
 
         this.numBallonsArray = Array(numBallons).fill(0).map((x, i) => i);
     }
