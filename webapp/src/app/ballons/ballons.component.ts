@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FelicitationComponent } from '../felicitation/felicitation.component';
 import { BirthdayCardComponent } from '../birthday-card/birthday-card.component';
 
 @Component({
@@ -8,7 +7,6 @@ import { BirthdayCardComponent } from '../birthday-card/birthday-card.component'
     standalone: true,
     imports: [
         CommonModule,
-        FelicitationComponent,
         BirthdayCardComponent
     ],
     templateUrl: './ballons.component.html',
