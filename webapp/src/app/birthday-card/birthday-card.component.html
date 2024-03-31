@@ -1,19 +1,21 @@
-<div class="card">
-    <div class="outside">
-      <div class="front">
-        <p class="font-bold">ÁBREME!</p>
-        <div class="cake">
-          <div class="top-layer"></div>
-          <div class="middle-layer"></div>
-          <div class="bottom-layer"></div>
-          <div class="candle"></div>
+<div class="birthdayCard">
+    <div class="cardFront">
+        <h3 class="happy">ÁBREME!</h3>
+        <div class="balloons">
+            <div class="balloon-1"></div>
+            <div class="balloon-2"></div>
+            <div class="balloon-3"></div>
+            <div class="balloon-4"></div>
         </div>
-      </div>
-      <div class="back"></div>
     </div>
-    <div class="inside">
-      <p class="text-3xl text-center font-bold">Muchas Felicidadesss Patrii :)</p>
-      <p class="text-lg" [innerHTML]="'Fotito de Cane que nunca sobra' + emoji"></p>
-      <img src="assets/images/cane.jpeg" class="w-52 rounded-full" />
+    <div class="cardInside">
+        <h3 class="back text-3xl text-center font-bold mt-2">Muchas Felicidadesss Patrii :)</h3>
+        <p
+            class="text-lg text-center mt-2 mb-2"
+            [innerHTML]="'Fotito de Cane que nunca sobra' + emoji"
+        ></p>
+        <div class="flex justify-center items-center">
+            <img src="assets/images/cane.jpeg" class="w-32 rounded-full" />
+        </div>
     </div>
-  </div>
+</div>
