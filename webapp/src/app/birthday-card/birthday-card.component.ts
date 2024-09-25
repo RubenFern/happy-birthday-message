@@ -24,7 +24,6 @@ export class BirthdayCardComponent
             this.image = params['imageUrl'] || `assets/images/${ params['image'] || '' }`;
             this.color = params['color'] || 'defect';
 
-            document.documentElement.classList.remove('bg-defect');
             document.documentElement.classList.add(`bg-${ this.color }`);
         });
     }
