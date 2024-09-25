@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-birthday-card',
@@ -9,5 +10,24 @@ import { Component } from '@angular/core';
 })
 export class BirthdayCardComponent
 {
-    public emoji: string = "&#128523";
+    public title: string = '';
+    public subtitle: string = '';
+    public image: string = '';
+    public color: string = 'defect';
+
+    constructor(private _route: ActivatedRoute)
+    {
+        this._route.queryParams.subscribe(params =>
+        {
+            this.title = params['title'];
+            this.subtitle = params['subtitle'];
+            this.image = params['imageUrl'] || `assets/images/${ params['image'] || '' }`;
+            this.color = params['color'] || 'defect';
+
+            document.documentElement.classList.remove('bg-defect');
+            document.documentElement.classList.add(`bg-${ this.color }`);
+        });
+    }
+
+
 }

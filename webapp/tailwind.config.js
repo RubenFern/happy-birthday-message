@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
         backgroundColor: {
-          'dark-mode': '#FA8072'
+            'defect': '#FA8072',
+            'yellow': '#FFC300',
         },
     },
   },

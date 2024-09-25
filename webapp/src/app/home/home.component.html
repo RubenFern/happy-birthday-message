@@ -1,0 +1,58 @@
+<div class="flex flex-col items-center justify-center h-screen">
+    <div class="w-full max-w-md p-8 bg-red-300 rounded-xl">
+        <h2 class="text-2xl font-bold text-center mb-6 text-red-950">Datos de la tarjeta</h2>
+        <form [formGroup]="dataForm" (submit)="generateUrl()">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Título</mat-label>
+                <input matInput placeholder="¡Feliz cumpleaños!" formControlName="title">
+                @if (dataForm.controls['title'].touched) {
+                    @if (dataForm.controls['title'].getError('required')) {
+                        <mat-error>¡Debes escribir algo!</mat-error>
+                    }
+                    @if (dataForm.controls['title'].getError('maxlength')) {
+                        <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                    }
+                }
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Subtítulo</mat-label>
+                <input matInput placeholder="Espero..." formControlName="subtitle">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>message</mat-label>
+                <input matInput placeholder="Te deseo..." formControlName="message">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Imagen</mat-label>
+                <input matInput placeholder="image.png | image.jpg | http://.../image.png" formControlName="image">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Color</mat-label>
+                <mat-select [(value)]="selectedColor" (selectionChange)="selectColor($event)">
+                    @for (color of getColors(); track $index) {
+                        <mat-option [value]="color.key">
+                            {{ color.value }}
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <div class="flex">
+                <button mat-raised-button color="secondary" class="w-full mr-1" (click)="clearForm()">Limpiar</button>
+                <button mat-raised-button color="primary" class="w-full ml-1">Generar URL</button>
+            </div>
+        </form>
+    </div>
+
+    @if (showUrl) {
+        <div class="bg-red-300 p-5 w-full max-w-md mt-2 rounded-xl text-center">
+            <p class="text-center text-lg font-bold">{{ url }}</p>
+            <button mat-raised-button color="primary" (click)="copy()" class="w-full mt-5">Copiar</button>
+            <a mat-raised-button color="secondary" [href]="url" target="_blank" class="w-full mt-5">Ver</a>
+        </div>
+    }
+</div>
