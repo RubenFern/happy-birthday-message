@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Redirigir</title>
-  <meta http-equiv="refresh" content="0; url=./">
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirigiendo...</title>
+    <script type="text/javascript">
+      // Redirige a la misma ruta, pero usando el index.html para que Angular maneje la ruta
+      var currentUrl = window.location.pathname;
+      var newUrl = "/nombre-del-repositorio" + currentUrl;
+      window.location.href = newUrl;
+    </script>
+  </head>
+  <body>
+    Redirigiendo...
+  </body>
 </html>
