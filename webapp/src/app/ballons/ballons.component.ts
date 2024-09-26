@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { BirthdayCardComponent } from '../birthday-card/birthday-card.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-ballons',
@@ -15,6 +16,12 @@ import { BirthdayCardComponent } from '../birthday-card/birthday-card.component'
 export class BallonsComponent implements OnInit
 {
     public numBallonsArray: number[] = [];
+    public color: string = 'defect';
+    public showBallons: boolean = false;
+
+    constructor(private _route: ActivatedRoute) {
+        this._route.queryParams.subscribe(params => this.color = params['color'] || 'defect');
+    }
 
     ngOnInit(): void
     {
@@ -30,5 +37,9 @@ export class BallonsComponent implements OnInit
             numBallons = 27;
 
         this.numBallonsArray = Array(numBallons).fill(0).map((x, i) => i);
+    }
+
+    public displayBallons(): void {
+        this.showBallons = true;
     }
 }

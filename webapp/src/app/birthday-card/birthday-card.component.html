@@ -1,4 +1,4 @@
-<div class="birthdayCard">
+<div class="birthdayCard" (mouseenter)="emit()">
     <div class="cardFront">
         <h3 class="happy font-bold text-3xl">ÁBREME!</h3>
         <div class="balloons">
@@ -10,9 +10,10 @@
     </div>
     <div class="cardInside">
         <h3 class="back text-3xl text-center font-bold mt-2">{{ title }}</h3>
-        <p class="text-lg text-center mt-2 mb-2">{{ subtitle }}</p>
+        <h5 class="text-lg text-center mt-2 mb-2">{{ subtitle }}</h5>
         <div class="flex justify-center items-center">
-            <img src="assets/images/cane.jpeg" class="w-36 rounded-full" />
+            <img [src]="image" class="w-36 rounded-full" />
         </div>
+        <p class="mt-2 text-center">{{ message }}</p>
     </div>
 </div>

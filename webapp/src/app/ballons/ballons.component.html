@@ -1,7 +1,9 @@
-@for (num of numBallonsArray; track $index) {
-    <div class="balloon"></div>
+@if (showBallons) {
+    @for (num of numBallonsArray; track $index) {
+        <div class="balloon"></div>
+    }
 }
 
-<div class="flex justify-center items-center h-screen">
-    <app-birthday-card />
+<div [ngClass]="['flex justify-center items-center h-screen ' + 'bg-' + color]">
+    <app-birthday-card (displayBallons)="displayBallons()" />
 </div>

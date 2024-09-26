@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,23 +10,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BirthdayCardComponent
 {
-    public title: string = '';
-    public subtitle: string = '';
-    public image: string = '';
-    public color: string = 'defect';
+    @Output() displayBallons: EventEmitter<void> = new EventEmitter();
+
+    public title: string = '¡Feliz cumpleaños!';
+    public subtitle: string = ':D';
+    public message: string = 'Que lo pases genial en tu día';
+    public image: string = 'assets/images/happy_birthday.jpg';
 
     constructor(private _route: ActivatedRoute)
     {
         this._route.queryParams.subscribe(params =>
         {
-            this.title = params['title'];
-            this.subtitle = params['subtitle'];
-            this.image = params['imageUrl'] || `assets/images/${ params['image'] || '' }`;
-            this.color = params['color'] || 'defect';
-
-            document.documentElement.classList.add(`bg-${ this.color }`);
+            this.title = params['title'] || this.title;
+            this.subtitle = params['subtitle'] || this.subtitle;
+            this.message = params['message'] || this.message;
+            this.image = params['imageUrl'] || (params['image']) ? `assets/images/${ params['image'] }` : this.image;
         });
     }
 
-
+    public emit(): void {
+        this.displayBallons.emit();
+    }
 }

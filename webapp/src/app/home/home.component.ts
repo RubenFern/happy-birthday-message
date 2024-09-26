@@ -32,7 +32,9 @@ export class HomeComponent
         'yellow': 'Amarillo',
     }
 
-    constructor(private snackBar: MatSnackBar) {}
+    constructor(private snackBar: MatSnackBar) {
+        document.documentElement.classList.add('bg-defect');
+    }
 
     public dataForm: FormGroup = new FormGroup({
         title: new FormControl<string>('', [Validators.required, Validators.minLength(1), Validators.maxLength(14)], []),
