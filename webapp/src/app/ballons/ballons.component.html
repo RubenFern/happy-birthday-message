@@ -4,16 +4,16 @@
     }
 }
 
-<div [ngClass]="'bg-' + color">
-    <div class="pl-10 pt-4 flex items-center w-full">
+<div [ngClass]="'h-screen bg-' + color">
+    <div class="flex justify-center items-center h-full">
+        <app-birthday-card (displayBallons)="displayBallons()" />
+    </div>
+
+    <div class="absolute bottom-0 left-0 pl-10 pb-4 flex items-center w-full">
         <mat-icon>arrow_back</mat-icon>
         <span routerLink="/home" class="cursor-pointer font-bold italic">
             Generar tarjeta
         </span>
-    </div>
-
-    <div class="flex justify-center items-center h-screen">
-        <app-birthday-card (displayBallons)="displayBallons()" />
     </div>
 </div>
 
