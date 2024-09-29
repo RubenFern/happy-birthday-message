@@ -1,14 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
 import { BirthdayCardComponent } from '../birthday-card/birthday-card.component';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-ballons',
     standalone: true,
     imports: [
+        BirthdayCardComponent,
         CommonModule,
-        BirthdayCardComponent
+        MatIconModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterOutlet,
     ],
     templateUrl: './ballons.component.html',
     styleUrl: './ballons.component.css'

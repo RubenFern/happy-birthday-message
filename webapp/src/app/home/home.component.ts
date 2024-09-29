@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, isDevMode } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,10 +25,15 @@ export class HomeComponent
 {
     public copied: boolean = false;
     public showUrl: boolean = false;
-    public url: string = '';
+    public url: string = 'message';
     public selectedColor: string = '';
     public colors = {
         'defect': 'Defecto',
+        'blue': 'Azul',
+        'green': 'Verde',
+        'pink': 'Rosa',
+        'purple': 'Morado',
+        'red': 'Rojo',
         'yellow': 'Amarillo',
     }
 
@@ -55,14 +60,17 @@ export class HomeComponent
             return;
 
         const currentDomain = window.location.origin;
-        this.url = `message?title=${ this.dataForm.value['title'] }`;
 
+        this.addToUrl('title');
         this.addToUrl('subtitle');
         this.addToUrl('message');
         this.addToUrl('image');
         this.addToUrl('color');
 
-        this.url = `${ currentDomain }/happy-birthday-message/${ this.url }`.replaceAll(' ', '%20');
+        if (isDevMode())
+            this.url = `${ currentDomain }/${ this.url }`.replaceAll(' ', '%20');
+        else
+            this.url = `${ currentDomain }/happy-birthday-message/${ this.url }`.replaceAll(' ', '%20');
         this.showUrl = true;
     }
 
@@ -79,8 +87,13 @@ export class HomeComponent
     }
 
     private addToUrl(field: string): void {
-        if (this.dataForm.value[field])
+        if (!this.dataForm.value[field])
+            return;
+
+        if (this.url.includes('?'))
             this.url = this.url.concat(`&${ field }=${ this.dataForm.value[field] }`);
+        else
+            this.url = this.url.concat(`?${ field }=${ this.dataForm.value[field] }`);
     }
 
     public copy(): void {
