@@ -37,9 +37,9 @@ export class HomeComponent
     }
 
     public dataForm: FormGroup = new FormGroup({
-        title: new FormControl<string>('', [Validators.required, Validators.minLength(1), Validators.maxLength(14)], []),
-        subtitle: new FormControl<string>('', [], []),
-        message: new FormControl<string>('', [], []),
+        title: new FormControl<string>('', [Validators.maxLength(14)], []),
+        subtitle: new FormControl<string>('', [Validators.maxLength(25)], []),
+        message: new FormControl<string>('', [Validators.maxLength(100)], []),
         image: new FormControl<string>('', [], []),
         color: new FormControl<string>('', [], [])
     });

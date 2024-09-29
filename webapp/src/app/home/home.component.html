@@ -4,17 +4,15 @@
             <img class="mt-2 bg-white rounded-full" src="assets/images/github.png" width="40" alt="">
         </a>
     </div>
-    <div class="p-3 md:p-0">
+    <div class="p-3 md:p-0 md:mb-32">
         <div class="w-full max-w-md p-8 bg-red-300 rounded-xl">
             <h2 class="text-2xl font-bold text-center mb-6 text-red-950">Datos de la tarjeta</h2>
             <form [formGroup]="dataForm" (submit)="generateUrl()">
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Título</mat-label>
                     <input matInput placeholder="¡Feliz cumpleaños!" formControlName="title">
+                    <mat-hint>Opcional</mat-hint>
                     @if (dataForm.controls['title'].touched) {
-                        @if (dataForm.controls['title'].getError('required')) {
-                            <mat-error>¡Debes escribir algo!</mat-error>
-                        }
                         @if (dataForm.controls['title'].getError('maxlength')) {
                             <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
                         }
@@ -24,16 +22,29 @@
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Subtítulo</mat-label>
                     <input matInput placeholder="Espero..." formControlName="subtitle">
+                    <mat-hint>Opcional</mat-hint>
+                    @if (dataForm.controls['subtitle'].touched) {
+                        @if (dataForm.controls['subtitle'].getError('maxlength')) {
+                            <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                        }
+                    }
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>message</mat-label>
                     <input matInput placeholder="Te deseo..." formControlName="message">
+                    <mat-hint>Opcional</mat-hint>
+                    @if (dataForm.controls['message'].touched) {
+                        @if (dataForm.controls['message'].getError('maxlength')) {
+                            <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                        }
+                    }
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
                     <mat-label>Imagen</mat-label>
                     <input matInput placeholder="image.png | image.jpg | http://.../image.png" formControlName="image">
+                    <mat-hint>Opcional</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
@@ -45,6 +56,7 @@
                             </mat-option>
                         }
                     </mat-select>
+                    <mat-hint>Opcional</mat-hint>
                 </mat-form-field>
 
                 <div class="flex">
