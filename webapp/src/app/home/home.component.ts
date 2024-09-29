@@ -62,7 +62,7 @@ export class HomeComponent
         this.addToUrl('image');
         this.addToUrl('color');
 
-        this.url = `${ currentDomain }/${ this.url }`.replaceAll(' ', '%20');
+        this.url = `${ currentDomain }/happy-birthday-message/${ this.url }`.replaceAll(' ', '%20');
         this.showUrl = true;
     }
 
