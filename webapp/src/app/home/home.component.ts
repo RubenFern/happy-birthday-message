@@ -25,7 +25,7 @@ export class HomeComponent
 {
     public copied: boolean = false;
     public showUrl: boolean = false;
-    public url: string = 'message';
+    public url: string = '';
     public selectedColor: string = '';
     public colors = {
         'defect': 'Defecto',
@@ -60,6 +60,10 @@ export class HomeComponent
             return;
 
         const currentDomain = window.location.origin;
+        if (isDevMode())
+            this.url = `${ currentDomain }/message`;
+        else
+            this.url = `${ currentDomain }/happy-birthday-message/message`;
 
         this.addToUrl('title');
         this.addToUrl('subtitle');
@@ -67,10 +71,7 @@ export class HomeComponent
         this.addToUrl('image');
         this.addToUrl('color');
 
-        if (isDevMode())
-            this.url = `${ currentDomain }/${ this.url }`.replaceAll(' ', '%20');
-        else
-            this.url = `${ currentDomain }/happy-birthday-message/${ this.url }`.replaceAll(' ', '%20');
+        this.url = this.url.replaceAll(' ', '%20');
         this.showUrl = true;
     }
 
