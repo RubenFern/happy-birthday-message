@@ -1,0 +1,33 @@
+{
+    "header": {
+        "english": "English",
+        "spanish": "Spanish"
+    },
+    "home": {
+        "blue": "Blue",
+        "card_details": "Card details",
+        "clear": "Clear",
+        "color": "Color",
+        "copy": "Copy",
+        "defect": "Defect",
+        "error_max_size": "Text too large!",
+        "generate_url": "Generate URL",
+        "green": "Green",
+        "image": "Image",
+        "message_placeholder": "I wish...",
+        "message": "Message",
+        "optional": "Optional",
+        "pink": "Pink",
+        "purple": "Purple",
+        "red": "Red",
+        "subtitle_placeholder": "I hope...",
+        "subtitle": "Subtitle",
+        "title_placeholder": "Happy birthday!",
+        "title": "Title",
+        "view": "View",
+        "yellow": "Yellow"
+    },
+    "message": {
+        "generate_card": "Generate card"
+    }
+}
