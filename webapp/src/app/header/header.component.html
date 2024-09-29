@@ -1,0 +1,23 @@
+<div class="flex justify-end items-center w-full pr-5 mt-2">
+    <div class="flex justify-center items-center cursor-pointer mr-5" [matMenuTriggerFor]="menu">
+        <img [src]="lang === 'es' ? spainIcon : englandIcon" width="30" alt="">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+    <mat-menu #menu="matMenu">
+        <button (click)="changeLang('es')" mat-menu-item>
+            <mat-icon>
+                <img src="assets/images/spain-lang.png" alt="">
+            </mat-icon>
+            <span [ngClass]="lang === 'es' ? 'font-bold' : ''">{{ 'header.spanish' | translate }}</span>
+        </button>
+        <button (click)="changeLang('en')" mat-menu-item>
+            <mat-icon>
+                <img src="assets/images/england-lang.png" width="30" alt="">
+            </mat-icon>
+            <span [ngClass]="lang === 'en' ? 'font-bold' : ''">{{ 'header.english' | translate }}</span>
+        </button>
+    </mat-menu>
+    <a href="https://github.com/RubenFern/happy-birthday-message" target="_blank">
+        <img class="bg-white rounded-full" src="assets/images/github.png" width="40" alt="">
+    </a>
+</div>

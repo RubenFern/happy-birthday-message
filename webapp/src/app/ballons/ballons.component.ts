@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { BirthdayCardComponent } from '../birthday-card/birthday-card.component';
 
@@ -15,6 +16,7 @@ import { BirthdayCardComponent } from '../birthday-card/birthday-card.component'
         RouterLink,
         RouterLinkActive,
         RouterOutlet,
+        TranslateModule
     ],
     templateUrl: './ballons.component.html',
     styleUrl: './ballons.component.css'

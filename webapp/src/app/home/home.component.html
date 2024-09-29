@@ -1,67 +1,63 @@
-<div class="flex flex-col items-center justify-around h-screen">
-    <div class="flex justify-center w-full">
-        <a href="https://github.com/RubenFern/happy-birthday-message" target="_blank">
-            <img class="mt-2 bg-white rounded-full" src="assets/images/github.png" width="40" alt="">
-        </a>
-    </div>
-    <div class="p-3 md:p-0 md:mb-32">
+<div class="flex flex-col justify-between h-screen">
+    <app-header />
+    <div class="flex flex-col items-center p-3 md:p-0 md:mb-32">
         <div class="w-full max-w-md p-8 bg-red-300 rounded-xl">
-            <h2 class="text-2xl font-bold text-center mb-6 text-red-950">Datos de la tarjeta</h2>
+            <h2 class="text-2xl font-bold text-center mb-6 text-red-950">{{ 'home.card_details' | translate }}</h2>
             <form [formGroup]="dataForm" (submit)="generateUrl()">
                 <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Título</mat-label>
-                    <input matInput placeholder="¡Feliz cumpleaños!" formControlName="title">
-                    <mat-hint>Opcional</mat-hint>
+                    <mat-label>{{ 'home.title' | translate }}</mat-label>
+                    <input matInput placeholder="{{ 'home.title_placeholder' | translate }}" formControlName="title">
+                    <mat-hint>{{ 'home.optional' | translate }}</mat-hint>
                     @if (dataForm.controls['title'].touched) {
                         @if (dataForm.controls['title'].getError('maxlength')) {
-                            <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                            <mat-error class="text-red-600">{{ 'home.error_max_size' | translate }}</mat-error>
                         }
                     }
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Subtítulo</mat-label>
-                    <input matInput placeholder="Espero..." formControlName="subtitle">
-                    <mat-hint>Opcional</mat-hint>
+                    <mat-label>{{ 'home.subtitle' | translate }}</mat-label>
+                    <input matInput placeholder="{{ 'home.subtitle_placeholder' | translate }}" formControlName="subtitle">
+                    <mat-hint>{{ 'home.optional' | translate }}</mat-hint>
                     @if (dataForm.controls['subtitle'].touched) {
                         @if (dataForm.controls['subtitle'].getError('maxlength')) {
-                            <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                            <mat-error class="text-red-600">{{ 'home.error_max_size' | translate }}</mat-error>
                         }
                     }
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>message</mat-label>
-                    <input matInput placeholder="Te deseo..." formControlName="message">
-                    <mat-hint>Opcional</mat-hint>
+                    <mat-label>{{ 'home.message' | translate }}</mat-label>
+                    <input matInput placeholder="{{ 'home.message_placeholder' | translate }}" formControlName="message">
+                    <mat-hint>{{ 'home.optional' | translate }}</mat-hint>
                     @if (dataForm.controls['message'].touched) {
                         @if (dataForm.controls['message'].getError('maxlength')) {
-                            <mat-error class="text-red-600">¡Texto demasiado grande!</mat-error>
+                            <mat-error class="text-red-600">{{ 'home.error_max_size' | translate }}</mat-error>
                         }
                     }
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Imagen</mat-label>
+                    <mat-label>{{ 'home.image' | translate }}</mat-label>
                     <input matInput placeholder="image.png | image.jpg | http://.../image.png" formControlName="image">
-                    <mat-hint>Opcional</mat-hint>
+                    <mat-hint>{{ 'home.optional' | translate }}</mat-hint>
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="w-full">
-                    <mat-label>Color</mat-label>
+                    <mat-label>{{ 'home.color' | translate }}</mat-label>
                     <mat-select [(value)]="selectedColor" (selectionChange)="selectColor($event)">
-                        @for (color of getColors(); track $index) {
-                            <mat-option [value]="color.key">
-                                {{ color.value }}
+                        @for (color of colors; track $index) {
+                            <mat-option [value]="color">
+                                {{ 'home.' + color | translate }}
                             </mat-option>
                         }
                     </mat-select>
-                    <mat-hint>Opcional</mat-hint>
+                    <mat-hint>{{ 'home.optional' | translate }}</mat-hint>
                 </mat-form-field>
 
                 <div class="flex">
-                    <button mat-raised-button color="secondary" class="w-full mr-1" (click)="clearForm()">Limpiar</button>
-                    <button mat-raised-button color="primary" class="w-full ml-1">Generar URL</button>
+                    <button mat-raised-button color="secondary" class="w-full mr-1" (click)="clearForm()">{{ 'home.clear' | translate }}</button>
+                    <button mat-raised-button color="primary" class="w-full ml-1">{{ 'home.generate_url' | translate }}</button>
                 </div>
             </form>
         </div>
@@ -69,9 +65,10 @@
         @if (showUrl) {
             <div class="bg-red-300 p-5 w-full max-w-md mt-2 rounded-xl text-center">
                 <p class="text-center text-lg font-bold">{{ url }}</p>
-                <button mat-raised-button color="primary" (click)="copy()" class="w-full mt-5">Copiar</button>
-                <a mat-raised-button color="secondary" [href]="url" target="_blank" class="w-full mt-5">Ver</a>
+                <button mat-raised-button color="primary" (click)="copy()" class="w-full mt-5">{{ 'home.copy' | translate }}</button>
+                <a mat-raised-button color="secondary" [href]="url" target="_blank" class="w-full mt-5">{{ 'home.view' | translate }}</a>
             </div>
         }
     </div>
+    <div></div>
 </div>

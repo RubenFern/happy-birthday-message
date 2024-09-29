@@ -1,0 +1,33 @@
+{
+    "header": {
+        "english": "Inglés",
+        "spanish": "Español"
+    },
+    "home": {
+        "blue": "Azul",
+        "card_details": "Datos de la tarjeta",
+        "clear": "Limpiar",
+        "color": "Color",
+        "copy": "Copiar",
+        "defect": "Defecto",
+        "error_max_size": "¡Texto demasiado grande!",
+        "generate_url": "Generar URL",
+        "green": "Verde",
+        "image": "Imagen",
+        "message_placeholder": "Te deseo...",
+        "message": "Mensaje",
+        "optional": "Opcional",
+        "pink": "Rosa",
+        "purple": "Morado",
+        "red": "Rojo",
+        "subtitle_placeholder": "Espero...",
+        "subtitle": "Subtítulo",
+        "title_placeholder": "¡Feliz cumpleaños!",
+        "title": "Título",
+        "view": "Ver",
+        "yellow": "Amarillo"
+    },
+    "message": {
+        "generate_card": "Generar tarjeta"
+    }
+}

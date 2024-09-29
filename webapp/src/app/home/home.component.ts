@@ -1,22 +1,32 @@
 import { CommonModule } from "@angular/common";
 import { Component, isDevMode } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import {
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators
+} from "@angular/forms";
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from "@ngx-translate/core";
+
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
     selector: 'app-home',
     standalone: true,
     imports: [
         CommonModule,
+        HeaderComponent,
         MatButtonModule,
         MatCardModule,
         MatInputModule,
         MatSelectModule,
         ReactiveFormsModule,
+        TranslateModule,
     ],
     templateUrl: './home.component.html',
     styles: ``
@@ -27,15 +37,7 @@ export class HomeComponent
     public showUrl: boolean = false;
     public url: string = '';
     public selectedColor: string = '';
-    public colors = {
-        'defect': 'Defecto',
-        'blue': 'Azul',
-        'green': 'Verde',
-        'pink': 'Rosa',
-        'purple': 'Morado',
-        'red': 'Rojo',
-        'yellow': 'Amarillo',
-    }
+    public colors = ['defect', 'blue', 'green', 'pink', 'purple', 'red', 'yellow'];
 
     constructor(private snackBar: MatSnackBar) {
         document.documentElement.classList.add('bg-defect');
@@ -48,10 +50,6 @@ export class HomeComponent
         image: new FormControl<string>('', [], []),
         color: new FormControl<string>('', [], [])
     });
-
-    getColors() {
-        return Object.entries(this.colors).map(([key, value]) => ({ key, value }));
-    }
 
     public generateUrl(): void
     {
